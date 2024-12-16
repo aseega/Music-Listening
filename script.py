@@ -1,20 +1,22 @@
 import os
-
 import random
 from pydub import AudioSegment
 from pydub.utils import which
-import pandas as pd
-from genres import *
+import genres as db
 
-print(genre_ID)
+db.chosePiece() #chose piece
 
-csvfile = pd.read_csv(r"C:\Users\alexa\Documents\projects\Music Listening\music.csv")
-print (csvfile.sample())
+id = db.genre_ID[db.chosen_genre] #assign id to genre (baroque being 0 etc)
+
+composers = db.ranComposers() #choses 4 composers
+print(composers[id])
+
+print(composers)
 
 AudioSegment.converter = r"C:\ffmpeg\ffmpeg-7.1-essentials_build\bin\ffmpeg.exe"  
 AudioSegment.ffprobe = r"C:\ffmpeg\ffmpeg-7.1-essentials_build\bin\ffprobe.exe"
 
-file_path = r"C:\Users\alexa\Documents\projects\Music Listening\music\HWV-314.mp3"
+file_path = rf"C:\Users\alexa\Documents\projects\Music Listening\{db.chosen_path}"
 
 audio = AudioSegment.from_file(file_path)
 
@@ -28,4 +30,3 @@ faded_segment = segment.fade_in(2000).fade_out(2000)
 output_path = r"C:\Users\alexa\Documents\projects\Music Listening\output_piece.mp3"
 faded_segment.export(output_path, format="mp3")
 
-print("Audio segment with fade in/out saved successfully!")
