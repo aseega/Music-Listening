@@ -1,5 +1,19 @@
 import random
 
+   
+chosen_name = ''
+chosen_composer = ''
+chosen_genre = ''
+chosen_path = ''
+chosen_piece = ''
+chosen_time = ''
+
+fourComp = ''
+
+timeSig = []
+
+
+
 genre_ID = {
     'Baroque':0,
     'Classical':1,
@@ -29,9 +43,10 @@ genre_composers = [
 ]
 
 pieces = [
-    ['Concerto Grosso in G Major','Geroge Friederic Handel','Baroque',4,'\music\HWV-314.mp3'],
-    ['Serenade Number 9, in D Major VI - 2nd Menuetto','Wolfgang Amadeus Mozart','Classical',3,'music\SerenadeN9-Dmj.mp3']
+    ['Concerto Grosso in G Major','Geroge Friederic Handel','Baroque','4/4','music\HWV-314.mp3'],
+    ['Serenade Number 9, in D Major VI - 2nd Menuetto','Wolfgang Amadeus Mozart','Classical','3/4','music\SerenadeN9-Dmj.mp3']
 ]
+
 
 
 
@@ -43,8 +58,6 @@ def ranComposers():
         fourComp.append(random.choice(genre_composers[i]))
     fourComp[tempID] = chosen_composer
     return fourComp
-    
-
 
 def chosePiece():
     global chosen_name
